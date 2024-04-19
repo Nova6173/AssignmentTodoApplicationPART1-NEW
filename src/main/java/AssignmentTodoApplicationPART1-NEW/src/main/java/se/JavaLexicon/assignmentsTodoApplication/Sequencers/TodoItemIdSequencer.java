@@ -1,19 +1,22 @@
 package se.JavaLexicon.assignmentsTodoApplication.Sequencers;
 
 public class TodoItemIdSequencer {
-    public static int getId () {
-        return id;
-    }
-
-    public static void setId (int id) {
-        TodoItemIdSequencer.id = id;
-    }
-
-    private static int id = 0;
+    private static int currentId = 0;
 
     public static int nextId() {
-        return ++id;
+        return ++currentId;
 
     }
+    public static int getCurrentId () {
+        return currentId;
+    }
+
+    public static void setCurrentId (int id) {
+        currentId = id;
+    }
+
+
+
+
 
 }

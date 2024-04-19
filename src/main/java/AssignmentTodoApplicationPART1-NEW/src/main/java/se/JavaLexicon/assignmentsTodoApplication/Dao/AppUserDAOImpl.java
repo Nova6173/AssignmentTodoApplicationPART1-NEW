@@ -6,30 +6,28 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AppUserDAOImpl implements AppUserDAO{
+public class AppUserDAOImpl implements AppUserDAO {
 
-    private final Map<Integer, AppUser> appUsers = new HashMap<> ();
+    private Map<String, AppUser> users = new HashMap<> ();
 
     @Override
-    public void persist(AppUser appUser) {
-        appUsers.put(appUser.getId(), appUser);
-
+    public AppUser persist(AppUser appUser) {
+        users.put(appUser.getUsername(), appUser);
+        return appUser;
     }
+
+    @Override
     public AppUser findByUsername(String username) {
-        for (AppUser appUser : appUsers.values()) {
-            if (appUser.getUsername().equals(username)) {
-                return appUser;
-            }
-        }
-        return null;
+        return users.get(username);
     }
+
+    @Override
     public Collection<AppUser> findAll() {
-        return appUsers.values();
-
-    }
-    public void remove(AppUser appUser) {
-        appUsers.remove(appUser.getId());
+        return users.values();
     }
 
-
+    @Override
+    public void remove(String username) {
+        users.remove(username);
+    }
 }

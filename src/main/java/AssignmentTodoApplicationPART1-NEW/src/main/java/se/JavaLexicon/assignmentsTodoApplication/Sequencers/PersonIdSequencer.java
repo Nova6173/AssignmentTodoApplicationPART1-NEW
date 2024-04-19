@@ -2,17 +2,17 @@ package se.JavaLexicon.assignmentsTodoApplication.Sequencers;
 
 public class PersonIdSequencer {
 
-    private static int id = 0;
+    private static int CurrentId = 0;
 
     public static int nextId() {
-        return ++id;
+        return ++CurrentId;
     }
 
-    public static int getId () {
-        return id;
+    public static int getCurrentId () {
+        return CurrentId;
     }
 
-    public static void setId (int id) {
-        PersonIdSequencer.id = id;
+    public static void setCurrentId (int id) {
+        CurrentId = id;
     }
 }

@@ -1,14 +1,14 @@
 package se.JavaLexicon.assignmentsTodoApplication;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class Person {
-    // Fields
     private int id;
     private String firstName;
     private String lastName;
     private String email;
-    private AppUser credentials;
 
-    // Constructor
     public Person(int id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
@@ -16,58 +16,37 @@ public class Person {
         this.email = email;
     }
 
-    // Getters & Setters for each field
-
-    public AppUser getCredentials() {
-        return credentials;
-    }
-
-    public void setCredentials(AppUser credentials) {
-        this.credentials = credentials;
-    }
-
     public int getId() {
         return id;
-
     }
 
     public void setId(int id) {
         this.id = id;
-
     }
 
     public String getFirstName() {
         return firstName;
-
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-
     }
 
     public String getLastName() {
         return lastName;
-
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-
     }
 
     public String getEmail() {
         return email;
-
     }
 
     public void setEmail(String email) {
         this.email = email;
-
     }
-
-    // Summary method
-    // toString, equals, and hashCode methods
 
     @Override
     public String toString() {
@@ -83,15 +62,16 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Person person = (Person) o;
-
-        return id == person.id;
+        return id == person.id && firstName.equals(person.firstName) && lastName.equals(person.lastName) && email.equals(person.email);
     }
 
     @Override
     public int hashCode() {
-        return id;
+        return Objects.hash(id, firstName, lastName, email);
+    }
+
+    public String getSummary() {
+        return this.firstName + " " + this.lastName + " (" + this.email + ")";
     }
 }
-
